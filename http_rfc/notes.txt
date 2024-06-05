@@ -1,0 +1,38 @@
+HTTP-message   = start-line
+                      *( header-field CRLF )
+                      CRLF
+                      [ message-body ]
+
+start-line     = request-line / status-line
+
+SP: "single space"
+request-line   = method SP request-target SP HTTP-version CRLF
+    method         = token
+
+status-line = HTTP-version SP status-code SP reason-phrase CRLF
+    reason-phrase  = *( HTAB / SP / VCHAR / obs-text )
+
+The status-code element is a 3-digit integer code describing the
+result of the server's attempt to understand and satisfy the client's
+corresponding request.
+
+Methods:
+GET
+HEAD
+POST
+PUT
+DELETE
+CONNECT
+OPTIONS
+TRACE
+
+Status-Codes
+1xx (Informational): The request was received, continuing process
+2xx (Successful): The request was successfully received,
+      understood, and accepted
+3xx (Redirection): Further action needs to be taken in order to
+      complete the request
+4xx (Client Error): The request contains bad syntax or cannot be
+      fulfilled
+5xx (Server Error): The server failed to fulfill an apparently
+      valid request
